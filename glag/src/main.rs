@@ -8,9 +8,9 @@ use clap::Parser;
 struct GlagCli {}
 
 fn main() -> io::Result<()> {
-    let cli = GlagCli::parse();
+    let _cli = GlagCli::parse();
     
-    println!("Hello from Glagolica! CLI: {cli:#?}");
+    println!("Hello from Glagolica!");
     
     Ok(())
 }
