@@ -1,0 +1,35 @@
+[workspace]
+resolver = "2"
+members = ["glag", "server"]
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+unused_unsafe = "deny"
+unused_import_braces = "deny"
+unused_lifetimes = "deny"
+keyword_idents_2018 = "deny"
+keyword_idents_2024 = "deny"
+missing_abi = "deny"
+future_incompatible = { level = "deny", priority = -1 }
+
+[workspace.lints.clippy]
+borrow_as_ptr = "deny"
+case_sensitive_file_extension_comparisons = "deny"
+cast_lossless = "deny"
+cast_ptr_alignment = "deny"
+match_bool = "deny"
+mut_mut = "deny"
+wildcard_dependencies = "deny"
+redundant_type_annotations = "deny"
+infinite_loop = "deny"
+
+[profile.release]
+opt-level = "z"     # Optimize for size.
+lto = true          # Enable Link Time Optimization
+codegen-units = 1   # Reduce number of codegen units to increase optimizations.
+panic = "abort"     # Abort on panic
+strip = true        # Automatically strip symbols from the binary.
+
+[workspace.dependencies]
+clap = { version = "4.5.25", features = ["derive"] }
+tokio = { version = "1.43.0", features = ["full"] }
